@@ -3,7 +3,6 @@ global class ContagionSchedulable implements Schedulable {
     global void execute(SchedulableContext SC){
         this.contagiar();
     }
-    
     private void contagiar(){
         List<Criatura__c> humanList = [SELECT id,Criatura__c.RecordTypeId,Bunker__r.DefesaBunker__c,Bunker__c,(SELECT id,AcrescimoDefesa__c from RecursosCriatura__r) FROM Criatura__c where recordtypeId = '0125e000000usKzAAI'];
         List<Criatura__c> zombieList = [SELECT id FROM Criatura__c where recordtypeId = '0125e000000usL9AAI'];

@@ -15,7 +15,7 @@ trigger CriaturaTrigger on Criatura__c (after insert, after update, after delete
         }
     }
     List<Bunker__c> bkList = [select id, (Select id from Criaturas__r) from Bunker__c where id in : bunkerUpdateMap.keySet()];
-	for(Bunker__c bk : bkList){
+    for(Bunker__c bk : bkList){
         bunkerUpdateMap.get(bk.id).Populacao__c = bk.Criaturas__r.size();
     }
     

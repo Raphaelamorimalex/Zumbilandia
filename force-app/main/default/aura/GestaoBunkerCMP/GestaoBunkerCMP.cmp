@@ -1,0 +1,16 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <div style="box">
+      <span class="greeting">{!v.greeting}</span>, {!v.subject}!
+      <lightning:card variant="Narrow" title="Gestão de Bunkers" iconName="utility:component_customization">
+        <p class="slds-p-horizontal_small" style="min-height: 100px;">
+
+            <aura:if isTrue="{! v.showSpinner }">
+                <lightning:spinner alternativeText="Loading" size="medium" />
+            </aura:if>
+
+            <lightning:combobox name="bunker-combobox" label="Selecione um Bunker" placeholder="Clique aqui para selecionar um Bunker" options="{! v.options }" onchange="{! c.handleChange }"/>  
+        
+        </p>
+    </lightning:card>
+    </div>
+</aura:component>
