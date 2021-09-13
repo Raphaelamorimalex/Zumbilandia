@@ -9,9 +9,8 @@ public class GestaoBunkerCMPController {
     public static Bunker recuperaBunkerMembros( String bunkerId ){
         Bunker bunkerToReturn = new Bunker();
 
-        List<Criatura__c> criaturas = [SELECT id, Name, RecordType.name, Bunker__r.name, Bunker__r.Capacidade__c, Bunker__r.Ativo__c, Bunker__r.DefesaBunker__c, Bunker__r.AcrescimoDefesa__c, Bunker__r.Populacao__c, (SELECT AcrescimoDefesa__c from RecursosCriatura__r) FROM Criatura__c WHERE Bunker__c = :bunkerId limit 200];
+        List<Criatura__c> criaturas = [SELECT id, Name, RecordType.name, Bunker__r.name, Bunker__r.Capacidade__c, Bunker__r.DefesaBunker__c, Bunker__r.AcrescimoDefesa__c, Bunker__r.Populacao__c, (SELECT AcrescimoDefesa__c from RecursosCriatura__r) FROM Criatura__c WHERE Bunker__c = :bunkerId limit 200];
         if( !criaturas.isEmpty() ){
-            bunkerToReturn.ativo        = criaturas[0].Bunker__r.Ativo__c;
             bunkerToReturn.nome         = criaturas[0].Bunker__r.name;
             bunkerToReturn.capacidade   = Integer.valueOf( criaturas[0].Bunker__r.Capacidade__c );
             bunkerToReturn.populacao    = Integer.valueOf( criaturas[0].Bunker__r.Populacao__c );
@@ -60,15 +59,15 @@ public class GestaoBunkerCMPController {
                 membro.sfId     = criatura.Id;
                 membro.nome     = criatura.Name;
                 membro.tipo     = criatura.RecordType.name;
-                membro.defesa   = calculaDefesaCriatura( criatura.RecursosCriatura__r );
+                membro.defesa   = calculaDefesaCriatura( criatura.Recurso_da_Criatura__r );
             membros.add(membro);
         }
         return membros;
     }
 
-    private static Decimal calculaDefesaCriatura( List<RecursoCriatura__c> recursosCriatura ){
+    private static Decimal calculaDefesaCriatura( List<Recurso_da_Criatura__c > recursosCriatura ){
         Decimal defesa = 0;
-        for( RecursoCriatura__c recursoCriatura : recursosCriatura ){
+        for( Recurso_da_Criatura__c  recursoCriatura : recursosCriatura ){
             Decimal acrescimo = recursoCriatura.AcrescimoDefesa__c;
             defesa = defesa + acrescimo;
         }
