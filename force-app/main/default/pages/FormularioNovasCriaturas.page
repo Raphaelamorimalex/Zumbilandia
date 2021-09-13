@@ -1,8 +1,8 @@
-    <apex:page showHeader="false" controller="FormularioNovasCriaturasController" >
+<apex:page controller="FormularioNovasCriaturasController" >
         <apex:form id="changeStatusForm">
             <apex:pageBlock >
                 <apex:pageMessages />
-                <apex:pageBlockButtons>
+                <apex:pageBlockButtons >
                     <apex:commandButton value="Salvar Criatura" action="{!save}"/>
                 </apex:pageBlockButtons>
                 <apex:inputField value="{!criatura.Name}"/> <p/>

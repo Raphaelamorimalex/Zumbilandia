@@ -3,7 +3,8 @@
     <apiVersion>52.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>FormularioNovasCriaturas</label>
+    <description>Página padrão Meu perfil dos sites do Salesforce</description>
+    <label>MyProfilePage</label>
     <packageVersions>
         <majorNumber>1</majorNumber>
         <minorNumber>7</minorNumber>
